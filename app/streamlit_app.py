@@ -1,7 +1,14 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import sys
+import os
+
+# This allows importing from parent directory
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from main import preprocess_data, split_and_scale, train_logistic_regression
+
 
 st.title("Vehicle Insurance Fraud Checker")
 

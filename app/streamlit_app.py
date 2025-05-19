@@ -1,30 +1,42 @@
 import streamlit as st
 import pandas as pd
-import sys
-import os
+import numpy as np
+from main import preprocess_data, split_and_scale, train_logistic_regression
 
-# Add parent directory to path so we can import main.py
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+st.title("Vehicle Insurance Fraud Checker")
 
-from main import preprocess_data, split_and_scale, train_logistic_regression, train_random_forest, train_balanced_rf
+# Simulate input form
+st.subheader("Enter Claim Information")
 
-st.title("Vehicle Insurance Fraud Detection")
+sex = st.selectbox("Sex", ["Male", "Female"])
+marital_status = st.selectbox("Marital Status", ["Single", "Married"])
+age = st.slider("Age", 18, 100)
+vehicle_price = st.selectbox("Vehicle Price", ["less than 20000", "20000 to 29000", "more than 69000"])
+deductible = st.number_input("Deductible", min_value=0, step=100)
+past_claims = st.slider("Past Number of Claims", 0, 5)
+fault = st.selectbox("Fault", ["Policy Holder", "Third Party"])
 
-uploaded_file = st.file_uploader("Upload CSV file", type=["csv"])
-if uploaded_file:
-    df = pd.read_csv(uploaded_file)
-    st.write("### Raw Data Preview", df.head())
+# Button to predict
+if st.button("Check for Fraud"):
+    # Build a single-row dataframe to simulate new input
+    input_df = pd.DataFrame({
+        "Sex": [sex],
+        "MaritalStatus": [marital_status],
+        "Age": [age],
+        "VehiclePrice": [vehicle_price],
+        "Deductible": [deductible],
+        "PastNumberOfClaims": [past_claims],
+        "Fault": [fault]
+    })
 
-    df = preprocess_data(df)
-    xtrain, xtest, ytrain, ytest = split_and_scale(df)
+    # Load your pre-trained model here
+    # Preprocess `input_df` same as your training data (use get_dummies, etc.)
+    # model = load_model('your_saved_model.pkl')  ← optional step if serialized
 
-    st.subheader("Model Performance")
+    # Fake prediction for now
+    prediction = np.random.choice([0, 1], p=[0.7, 0.3])  # simulate fraud result
 
-    for name, trainer in [
-        ("Logistic Regression", train_logistic_regression),
-        ("Random Forest", train_random_forest),
-        ("Balanced Random Forest", train_balanced_rf)
-    ]:
-        model, ypred = trainer(xtrain, xtest, ytrain, ytest)
-        st.markdown(f"**{name} Results:**")
-        st.text("Accuracy: {:.2f}".format((ypred == ytest).mean()))
+    if prediction == 1:
+        st.error("Fraudulent Claim Detected!")
+    else:
+        st.success("Claim appears genuine.")

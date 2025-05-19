@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
+import sys
+import os
+
+# Add parent directory to path so we can import main.py
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from main import preprocess_data, split_and_scale, train_logistic_regression, train_random_forest, train_balanced_rf
 
-st.title("🚗 Vehicle Insurance Fraud Detection")
+st.title("Vehicle Insurance Fraud Detection")
 
 uploaded_file = st.file_uploader("Upload CSV file", type=["csv"])
 if uploaded_file:

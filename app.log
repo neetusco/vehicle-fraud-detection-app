@@ -1,0 +1,405 @@
+2025-06-27 12:54:45,614 - __main__ - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 12:54:45,614 - __main__ - INFO - Shape of dataset: (15420, 33)
+2025-06-27 12:54:45,614 - __main__ - INFO - Data types:
+Month                   object
+WeekOfMonth              int64
+DayOfWeek               object
+Make                    object
+AccidentArea            object
+DayOfWeekClaimed        object
+MonthClaimed            object
+WeekOfMonthClaimed       int64
+Sex                     object
+MaritalStatus           object
+Age                      int64
+Fault                   object
+PolicyType              object
+VehicleCategory         object
+VehiclePrice            object
+FraudFound_P             int64
+PolicyNumber             int64
+RepNumber                int64
+Deductible               int64
+DriverRating             int64
+Days_Policy_Accident    object
+Days_Policy_Claim       object
+PastNumberOfClaims      object
+AgeOfVehicle            object
+AgeOfPolicyHolder       object
+PoliceReportFiled       object
+WitnessPresent          object
+AgentType               object
+NumberOfSuppliments     object
+AddressChange_Claim     object
+NumberOfCars            object
+Year                     int64
+BasePolicy              object
+dtype: object
+2025-06-27 12:54:45,627 - __main__ - INFO - Missing values:
+Month                   0
+WeekOfMonth             0
+DayOfWeek               0
+Make                    0
+AccidentArea            0
+DayOfWeekClaimed        0
+MonthClaimed            0
+WeekOfMonthClaimed      0
+Sex                     0
+MaritalStatus           0
+Age                     0
+Fault                   0
+PolicyType              0
+VehicleCategory         0
+VehiclePrice            0
+FraudFound_P            0
+PolicyNumber            0
+RepNumber               0
+Deductible              0
+DriverRating            0
+Days_Policy_Accident    0
+Days_Policy_Claim       0
+PastNumberOfClaims      0
+AgeOfVehicle            0
+AgeOfPolicyHolder       0
+PoliceReportFiled       0
+WitnessPresent          0
+AgentType               0
+NumberOfSuppliments     0
+AddressChange_Claim     0
+NumberOfCars            0
+Year                    0
+BasePolicy              0
+dtype: int64
+2025-06-27 12:54:45,641 - __main__ - INFO - Sample rows:
+  Month  WeekOfMonth  DayOfWeek    Make AccidentArea DayOfWeekClaimed MonthClaimed  WeekOfMonthClaimed  ... PoliceReportFiled WitnessPresent  AgentType NumberOfSuppliments AddressChange_Claim NumberOfCars  Year  BasePolicy
+0   Dec            5  Wednesday   Honda        Urban          Tuesday          Jan                   1  ...                No             No   External                none              1 year       3 to 4  1994   Liability
+1   Jan            3  Wednesday   Honda        Urban           Monday          Jan                   4  ...               Yes             No   External                none           no change    1 vehicle  1994   Collision
+2   Oct            5     Friday   Honda        Urban         Thursday          Nov                   2  ...                No             No   External                none           no change    1 vehicle  1994   Collision
+3   Jun            2   Saturday  Toyota        Rural           Friday          Jul                   1  ...               Yes             No   External         more than 5           no change    1 vehicle  1994   Liability
+4   Jan            5     Monday   Honda        Urban          Tuesday          Feb                   2  ...                No             No   External                none           no change    1 vehicle  1994   Collision
+
+[5 rows x 33 columns]
+2025-06-27 13:00:40,542 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:00:40,561 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:00:40,561 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:00:40,603 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:00:40,604 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:00:40,608 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:36:01,536 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 13:36:01,536 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:36:01,556 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:36:01,556 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:36:01,583 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:36:01,583 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:36:01,599 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:36:01,599 - logistic_model - INFO - Training Logistic Regression model...
+2025-06-27 13:36:01,753 - logistic_model - INFO - Model training completed.
+2025-06-27 13:36:01,753 - logistic_model - INFO - Evaluating Logistic Regression model...
+2025-06-27 13:36:01,769 - logistic_model - INFO - Accuracy: 0.9361
+2025-06-27 13:36:01,769 - logistic_model - INFO - Confusion Matrix:
+[[2887    0]
+ [ 197    0]]
+2025-06-27 13:36:01,769 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97      2887
+           1       0.00      0.00      0.00       197
+
+    accuracy                           0.94      3084
+   macro avg       0.47      0.50      0.48      3084
+weighted avg       0.88      0.94      0.91      3084
+
+2025-06-27 13:36:22,885 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 13:36:22,885 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:36:22,893 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:36:22,894 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:36:22,934 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:36:22,935 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:36:22,939 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:36:22,939 - logistic_model - INFO - Training Logistic Regression model...
+2025-06-27 13:36:23,103 - logistic_model - INFO - Model training completed.
+2025-06-27 13:36:23,103 - logistic_model - INFO - Evaluating Logistic Regression model...
+2025-06-27 13:36:23,103 - logistic_model - INFO - Accuracy: 0.9361
+2025-06-27 13:36:23,103 - logistic_model - INFO - Confusion Matrix:
+[[2887    0]
+ [ 197    0]]
+2025-06-27 13:36:23,103 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97      2887
+           1       0.00      0.00      0.00       197
+
+    accuracy                           0.94      3084
+   macro avg       0.47      0.50      0.48      3084
+weighted avg       0.88      0.94      0.91      3084
+
+2025-06-27 13:39:01,375 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 13:39:01,375 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:39:01,394 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:39:01,394 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:39:01,420 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:39:01,420 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:39:01,435 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:39:01,435 - logistic_model - INFO - Training Logistic Regression model...
+2025-06-27 13:39:01,798 - logistic_model - INFO - Accuracy: 0.6083
+2025-06-27 13:39:01,798 - logistic_model - INFO - Confusion Matrix:
+[[1696 1191]
+ [  17  180]]
+2025-06-27 13:39:01,798 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.59      0.74      2887
+           1       0.13      0.91      0.23       197
+
+    accuracy                           0.61      3084
+   macro avg       0.56      0.75      0.48      3084
+weighted avg       0.94      0.61      0.70      3084
+
+2025-06-27 13:40:55,511 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 13:40:55,511 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:40:55,528 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:40:55,528 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:40:55,569 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:40:55,570 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:40:55,573 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:40:55,573 - logistic_model - INFO - Training Logistic Regression model...
+2025-06-27 13:40:55,913 - logistic_model - INFO - Accuracy: 0.6083
+2025-06-27 13:40:55,913 - logistic_model - INFO - Confusion Matrix:
+[[1696 1191]
+ [  17  180]]
+2025-06-27 13:40:55,913 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.59      0.74      2887
+           1       0.13      0.91      0.23       197
+
+    accuracy                           0.61      3084
+   macro avg       0.56      0.75      0.48      3084
+weighted avg       0.94      0.61      0.70      3084
+
+2025-06-27 13:48:05,263 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 13:48:05,263 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:48:05,275 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:48:05,275 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:48:05,307 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:48:05,307 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:48:05,307 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:48:05,307 - logistic_model - INFO - Training Logistic Regression model...
+2025-06-27 13:48:05,675 - logistic_model - INFO - Accuracy: 0.6083
+2025-06-27 13:48:05,675 - logistic_model - INFO - Confusion Matrix:
+[[1696 1191]
+ [  17  180]]
+2025-06-27 13:48:05,675 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.59      0.74      2887
+           1       0.13      0.91      0.23       197
+
+    accuracy                           0.61      3084
+   macro avg       0.56      0.75      0.48      3084
+weighted avg       0.94      0.61      0.70      3084
+
+2025-06-27 13:58:26,206 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 13:58:26,206 - data_processing - INFO - Starting preprocessing...
+2025-06-27 13:58:26,223 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 13:58:26,223 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 13:58:26,263 - data_processing - INFO - Preprocessing completed.
+2025-06-27 13:58:26,265 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 13:58:26,267 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 13:58:26,267 - neural_network - INFO - Training neural network model...
+2025-06-27 13:58:45,301 - neural_network - INFO - Neural network model training complete.
+2025-06-27 13:58:45,301 - neural_network - INFO - Evaluating neural network model...
+2025-06-27 13:58:45,317 - neural_network - INFO - Accuracy: 0.9125
+2025-06-27 13:58:45,317 - neural_network - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      0.96      0.95      2887
+           1       0.23      0.16      0.19       197
+
+    accuracy                           0.91      3084
+   macro avg       0.59      0.56      0.57      3084
+weighted avg       0.90      0.91      0.90      3084
+
+2025-06-27 14:06:35,655 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:06:35,655 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:06:35,655 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:06:35,655 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:06:35,703 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:06:35,703 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:06:35,703 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:06:35,703 - neural_network - INFO - Training neural network with class weights...
+2025-06-27 14:06:35,718 - neural_network - INFO - Computed class weights: {0: 0.531266149870801, 1: 8.49586776859504}
+2025-06-27 14:07:32,087 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:07:32,087 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:07:32,095 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:07:32,095 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:07:32,130 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:07:32,130 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:07:32,130 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:07:32,130 - neural_network - INFO - Training neural network using class-balanced sample weights...
+2025-06-27 14:07:43,656 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:07:43,656 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:07:43,660 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:07:43,660 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:07:43,710 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:07:43,712 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:07:43,714 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:07:43,716 - neural_network - INFO - Training neural network using class-balanced sample weights...
+2025-06-27 14:09:43,656 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:09:43,656 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:09:43,672 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:09:43,672 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:09:43,703 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:09:43,703 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:09:43,703 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:09:43,703 - neural_network - INFO - Applying SMOTE to balance classes...
+2025-06-27 14:09:43,922 - neural_network - INFO - Resampled training set shape: (23220, 31), (23220,)
+2025-06-27 14:09:43,922 - neural_network - INFO - Training neural network model...
+2025-06-27 14:10:34,955 - neural_network - INFO - Neural network model training complete.
+2025-06-27 14:10:34,955 - neural_network - INFO - Evaluating neural network model...
+2025-06-27 14:10:34,972 - neural_network - INFO - Accuracy: 0.8696
+2025-06-27 14:10:34,972 - neural_network - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.91      0.93      2887
+           1       0.17      0.27      0.21       197
+
+    accuracy                           0.87      3084
+   macro avg       0.56      0.59      0.57      3084
+weighted avg       0.90      0.87      0.88      3084
+
+2025-06-27 14:15:31,970 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:15:31,970 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:15:31,981 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:15:31,981 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:15:32,016 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:15:32,016 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:15:32,032 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:15:32,032 - neural_network - INFO - Starting hyperparameter tuning for neural network...
+2025-06-27 14:24:58,730 - neural_network - INFO - Best parameters found: {'activation': 'relu', 'alpha': 0.0001, 'hidden_layer_sizes': (100, 50), 'learning_rate_init': 0.01, 'max_iter': 300}
+2025-06-27 14:24:58,730 - neural_network - INFO - Evaluating tuned neural network model...
+2025-06-27 14:24:58,746 - neural_network - INFO - Accuracy: 0.9102
+2025-06-27 14:24:58,746 - neural_network - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      0.97      0.95      2887
+           1       0.17      0.11      0.13       197
+
+    accuracy                           0.91      3084
+   macro avg       0.56      0.54      0.54      3084
+weighted avg       0.89      0.91      0.90      3084
+
+2025-06-27 14:30:03,898 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:30:03,898 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:30:03,898 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:30:03,913 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:30:03,953 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:30:03,953 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:30:03,956 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:30:03,956 - neural_network - INFO - Applying SMOTE to balance training data...
+2025-06-27 14:30:04,118 - neural_network - INFO - After SMOTE: X shape = (23220, 31), y distribution = [11610 11610]
+2025-06-27 14:30:04,118 - neural_network - INFO - Training neural network with early stopping and tuned hyperparameters...
+2025-06-27 14:30:09,009 - neural_network - INFO - Model training complete.
+2025-06-27 14:30:09,009 - neural_network - INFO - Evaluating model with custom threshold...
+2025-06-27 14:30:09,009 - neural_network - INFO - Custom threshold = 0.3
+2025-06-27 14:30:09,009 - neural_network - INFO - Accuracy: 0.8045
+2025-06-27 14:30:09,009 - neural_network - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.83      0.89      2887
+           1       0.16      0.48      0.24       197
+
+    accuracy                           0.80      3084
+   macro avg       0.56      0.65      0.56      3084
+weighted avg       0.91      0.80      0.85      3084
+
+2025-06-27 14:35:45,068 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:35:45,068 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:35:45,073 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:35:45,073 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:35:45,113 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:35:45,114 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:35:45,117 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:35:45,117 - neural_network - INFO - Applying SMOTE to balance the dataset...
+2025-06-27 14:35:45,261 - neural_network - INFO - Training neural network model with early stopping...
+2025-06-27 14:35:58,824 - neural_network - INFO - Model training complete.
+2025-06-27 14:35:58,825 - neural_network - INFO - Evaluating thresholds for better recall on fraud class...
+2025-06-27 14:35:58,848 - neural_network - INFO - Threshold tuning results (Fraud class):
+2025-06-27 14:35:58,864 - neural_network - INFO - Recommended threshold (max recall): 0.10
+2025-06-27 14:35:58,864 - neural_network - INFO - Final Evaluation using selected threshold...
+2025-06-27 14:35:58,864 - neural_network - INFO - Accuracy: 0.7857
+2025-06-27 14:35:58,864 - neural_network - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.81      0.88      2887
+           1       0.14      0.48      0.22       197
+
+    accuracy                           0.79      3084
+   macro avg       0.55      0.64      0.55      3084
+weighted avg       0.91      0.79      0.83      3084
+
+2025-06-27 14:39:20,746 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:39:20,746 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:39:20,754 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:39:20,754 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:39:20,797 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:39:20,797 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:39:20,801 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:39:20,801 - logistic_model - INFO - Training Logistic Regression model...
+2025-06-27 14:39:21,156 - logistic_model - INFO - Accuracy: 0.6083
+2025-06-27 14:39:21,156 - logistic_model - INFO - Confusion Matrix:
+[[1696 1191]
+ [  17  180]]
+2025-06-27 14:39:21,156 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.59      0.74      2887
+           1       0.13      0.91      0.23       197
+
+    accuracy                           0.61      3084
+   macro avg       0.56      0.75      0.48      3084
+weighted avg       0.94      0.61      0.70      3084
+
+2025-06-27 14:42:47,453 - data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:42:47,455 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:42:47,455 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:42:47,455 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:42:47,504 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:42:47,505 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:42:47,509 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:42:47,509 - ensemble_model - INFO - Training ensemble model with Logistic Regression and BalancedRandomForest...
+2025-06-27 14:42:48,046 - ensemble_model - INFO - Ensemble model training complete.
+2025-06-27 14:42:48,046 - ensemble_model - INFO - Evaluating ensemble model...
+2025-06-27 14:42:48,140 - ensemble_model - INFO - Accuracy: 0.6145
+2025-06-27 14:42:48,140 - ensemble_model - INFO - ROC AUC: 0.8246
+2025-06-27 14:42:48,140 - ensemble_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.59      0.74      2887
+           1       0.14      0.95      0.24       197
+
+    accuracy                           0.61      3084
+   macro avg       0.57      0.77      0.49      3084
+weighted avg       0.94      0.61      0.71      3084
+
+2025-06-27 14:46:48,807 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-06-27 14:46:48,807 - data_processing - INFO - Starting preprocessing...
+2025-06-27 14:46:48,827 - data_processing - INFO - Categorical columns: ['Month', 'DayOfWeek', 'Make', 'AccidentArea', 'DayOfWeekClaimed', 'MonthClaimed', 'Sex', 'MaritalStatus', 'Fault', 'PolicyType', 'VehicleCategory', 'VehiclePrice', 'Days_Policy_Accident', 'Days_Policy_Claim', 'PastNumberOfClaims', 'AgeOfVehicle', 'AgeOfPolicyHolder', 'PoliceReportFiled', 'WitnessPresent', 'AgentType', 'NumberOfSuppliments', 'AddressChange_Claim', 'NumberOfCars', 'BasePolicy']
+2025-06-27 14:46:48,827 - data_processing - INFO - Numerical columns: ['WeekOfMonth', 'WeekOfMonthClaimed', 'Age', 'RepNumber', 'Deductible', 'DriverRating', 'Year']
+2025-06-27 14:46:48,865 - data_processing - INFO - Preprocessing completed.
+2025-06-27 14:46:48,870 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-06-27 14:46:48,870 - data_processing - INFO - Train shape: (12336, 31), Test shape: (3084, 31)
+2025-06-27 14:46:48,870 - xgboost_model - INFO - Training XGBoost model...
+2025-06-27 14:46:48,993 - xgboost_model - INFO - Training complete.
+2025-06-27 14:46:48,993 - xgboost_model - INFO - Evaluating XGBoost model...
+2025-06-27 14:46:49,011 - xgboost_model - INFO - Accuracy: 0.9047
+2025-06-27 14:46:49,011 - xgboost_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.95      0.95      2887
+           1       0.25      0.25      0.25       197
+
+    accuracy                           0.90      3084
+   macro avg       0.60      0.60      0.60      3084
+weighted avg       0.90      0.90      0.90      3084
+

@@ -11,39 +11,59 @@ from utils.logger import setup_logger
 # Initialize logger
 logger = setup_logger("data_processing")
 
-def preprocess_data(df):
-    """
-    Encode categorical features and scale numerical features.
-    """
-    logger.info("Starting preprocessing...")
+def preprocess_data(df, training=True):
+    # Fix Days_Policy_Accident if string-based (e.g., 'more than 30' -> 31)
+    if 'Days_Policy_Accident' in df.columns:
+        df['Days_Policy_Accident'] = df['Days_Policy_Accident'].replace({'more than 30': 31})
+        df['Days_Policy_Accident'] = pd.to_numeric(df['Days_Policy_Accident'], errors='coerce')
+    selected_cols = [
+        'Sex', 'MaritalStatus', 'Age', 'Fault', 'VehiclePrice', 'Deductible', 'PastNumberOfClaims',
+        'AccidentArea', 'PolicyType', 'VehicleCategory', 'PoliceReportFiled', 'WitnessPresent',
+        'AgeOfVehicle', 'Days_Policy_Accident'
+    ]
+    if training:
+        selected_cols.append('FraudFound_P')
 
-    # Drop identifier columns (if any)
-    if 'PolicyNumber' in df.columns:
-        df = df.drop(columns=['PolicyNumber'])
+    df = df[selected_cols].copy()
 
-    # Separate features and target
-    X = df.drop(columns=['FraudFound_P'])
-    y = df['FraudFound_P']
+    # Fix PastNumberOfClaims if string-based
+    if 'PastNumberOfClaims' in df.columns:
+        df['PastNumberOfClaims'] = df['PastNumberOfClaims'].replace({
+            'none': 0,
+            '1': 1,
+            '2': 2,
+            '3': 3,
+            '4': 4,
+            'more than 4': 5
+        })
+        # Convert to numeric, set errors='coerce' to turn unexpected values into NaN
+        df['PastNumberOfClaims'] = pd.to_numeric(df['PastNumberOfClaims'], errors='coerce')
 
-    # Identify categorical and numerical columns
-    cat_cols = X.select_dtypes(include=['object']).columns
-    num_cols = X.select_dtypes(include=['int64', 'float64']).columns
+    # Fix AgeOfVehicle if string-based (e.g., '3 years' -> 3)
+    if 'AgeOfVehicle' in df.columns:
+        df['AgeOfVehicle'] = df['AgeOfVehicle'].astype(str).str.extract(r'(\d+)').astype(float)
 
-    logger.info(f"Categorical columns: {list(cat_cols)}")
-    logger.info(f"Numerical columns: {list(num_cols)}")
+    # Impute numeric columns
+    numeric_cols = ['Age', 'Deductible', 'PastNumberOfClaims', 'AgeOfVehicle', 'Days_Policy_Accident']
+    for col in numeric_cols:
+        df[col] = df[col].fillna(df[col].median())
 
-    # Encode categorical columns
-    le = LabelEncoder()
-    for col in cat_cols:
-        X[col] = le.fit_transform(X[col])
-        logger.debug(f"Encoded {col}")
+    # Impute categorical columns
+    categorical_cols = [col for col in df.columns if df[col].dtype == 'object' and col != 'FraudFound_P']
+    for col in categorical_cols:
+        df[col] = df[col].fillna(df[col].mode()[0])
 
-    # Scale numeric columns
-    scaler = StandardScaler()
-    X[num_cols] = scaler.fit_transform(X[num_cols])
+    # Target separation
+    if training:
+        y = df['FraudFound_P']
+        df.drop(columns=['FraudFound_P'], inplace=True)
+    else:
+        y = None
 
-    logger.info("Preprocessing completed.")
-    return X, y
+    df = pd.get_dummies(df, drop_first=True)
+    df.dropna(inplace=True)
+
+    return df, y
 
 def split_and_scale(X, y, test_size=0.2, random_state=42):
     """

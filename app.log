@@ -1552,3 +1552,534 @@ weighted avg       0.91      0.81      0.85      3084
 2025-07-27 14:56:03,772 - ensemble_model - ERROR - Prediction failed: "['Sex', 'MaritalStatus', 'Fault', 'VehiclePrice', 'AccidentArea', 'PolicyType', 'VehicleCategory', 'PoliceReportFiled', 'WitnessPresent'] not in index"
 2025-07-27 14:57:53,490 - ensemble_model - ERROR - Prediction failed: "['Sex', 'MaritalStatus', 'Fault', 'VehiclePrice', 'AccidentArea', 'PolicyType', 'VehicleCategory', 'PoliceReportFiled', 'WitnessPresent'] not in index"
 2025-07-27 14:58:52,223 - logistic_model - ERROR - Prediction failed: "['Sex', 'MaritalStatus', 'Fault', 'VehiclePrice', 'AccidentArea', 'PolicyType', 'VehicleCategory', 'PoliceReportFiled', 'WitnessPresent'] not in index"
+2025-07-27 15:26:46,756 - neural_network - ERROR - Neural network prediction failed: [Errno 2] No such file or directory: 'outputs\\models\\neural_network_model.pkl'
+2025-07-27 15:34:41,546 - __main__ - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:34:41,548 - __main__ - INFO - Shape of dataset: (15420, 33)
+2025-07-27 15:34:41,548 - __main__ - INFO - Data types:
+Month                   object
+WeekOfMonth              int64
+DayOfWeek               object
+Make                    object
+AccidentArea            object
+DayOfWeekClaimed        object
+MonthClaimed            object
+WeekOfMonthClaimed       int64
+Sex                     object
+MaritalStatus           object
+Age                      int64
+Fault                   object
+PolicyType              object
+VehicleCategory         object
+VehiclePrice            object
+FraudFound_P             int64
+PolicyNumber             int64
+RepNumber                int64
+Deductible               int64
+DriverRating             int64
+Days_Policy_Accident    object
+Days_Policy_Claim       object
+PastNumberOfClaims      object
+AgeOfVehicle            object
+AgeOfPolicyHolder       object
+PoliceReportFiled       object
+WitnessPresent          object
+AgentType               object
+NumberOfSuppliments     object
+AddressChange_Claim     object
+NumberOfCars            object
+Year                     int64
+BasePolicy              object
+dtype: object
+2025-07-27 15:34:41,557 - __main__ - INFO - Missing values:
+Month                   0
+WeekOfMonth             0
+DayOfWeek               0
+Make                    0
+AccidentArea            0
+DayOfWeekClaimed        0
+MonthClaimed            0
+WeekOfMonthClaimed      0
+Sex                     0
+MaritalStatus           0
+Age                     0
+Fault                   0
+PolicyType              0
+VehicleCategory         0
+VehiclePrice            0
+FraudFound_P            0
+PolicyNumber            0
+RepNumber               0
+Deductible              0
+DriverRating            0
+Days_Policy_Accident    0
+Days_Policy_Claim       0
+PastNumberOfClaims      0
+AgeOfVehicle            0
+AgeOfPolicyHolder       0
+PoliceReportFiled       0
+WitnessPresent          0
+AgentType               0
+NumberOfSuppliments     0
+AddressChange_Claim     0
+NumberOfCars            0
+Year                    0
+BasePolicy              0
+dtype: int64
+2025-07-27 15:34:41,573 - __main__ - INFO - Sample rows:
+  Month  WeekOfMonth  DayOfWeek    Make AccidentArea  ... NumberOfSuppliments AddressChange_Claim  NumberOfCars  Year BasePolicy
+0   Dec            5  Wednesday   Honda        Urban  ...                none              1 year        3 to 4  1994  Liability
+1   Jan            3  Wednesday   Honda        Urban  ...                none           no change     1 vehicle  1994  Collision
+2   Oct            5     Friday   Honda        Urban  ...                none           no change     1 vehicle  1994  Collision
+3   Jun            2   Saturday  Toyota        Rural  ...         more than 5           no change     1 vehicle  1994  Liability
+4   Jan            5     Monday   Honda        Urban  ...                none           no change     1 vehicle  1994  Collision
+
+[5 rows x 33 columns]
+2025-07-27 15:35:23,649 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:35:23,733 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:35:23,733 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:35:23,736 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:35:23,736 - xgboost_model - INFO - Training XGBoost model...
+2025-07-27 15:35:23,857 - xgboost_model - INFO - Training complete.
+2025-07-27 15:35:23,858 - xgboost_model - INFO - Evaluating XGBoost model...
+2025-07-27 15:35:23,876 - xgboost_model - INFO - Accuracy: 0.8126
+2025-07-27 15:35:23,876 - xgboost_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.83      0.89      2887
+           1       0.18      0.52      0.26       197
+
+    accuracy                           0.81      3084
+   macro avg       0.57      0.68      0.58      3084
+weighted avg       0.91      0.81      0.85      3084
+
+2025-07-27 15:35:27,543 - __main__ - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:35:27,543 - __main__ - INFO - Shape of dataset: (15420, 33)
+2025-07-27 15:35:27,544 - __main__ - INFO - Data types:
+Month                   object
+WeekOfMonth              int64
+DayOfWeek               object
+Make                    object
+AccidentArea            object
+DayOfWeekClaimed        object
+MonthClaimed            object
+WeekOfMonthClaimed       int64
+Sex                     object
+MaritalStatus           object
+Age                      int64
+Fault                   object
+PolicyType              object
+VehicleCategory         object
+VehiclePrice            object
+FraudFound_P             int64
+PolicyNumber             int64
+RepNumber                int64
+Deductible               int64
+DriverRating             int64
+Days_Policy_Accident    object
+Days_Policy_Claim       object
+PastNumberOfClaims      object
+AgeOfVehicle            object
+AgeOfPolicyHolder       object
+PoliceReportFiled       object
+WitnessPresent          object
+AgentType               object
+NumberOfSuppliments     object
+AddressChange_Claim     object
+NumberOfCars            object
+Year                     int64
+BasePolicy              object
+dtype: object
+2025-07-27 15:35:27,552 - __main__ - INFO - Missing values:
+Month                   0
+WeekOfMonth             0
+DayOfWeek               0
+Make                    0
+AccidentArea            0
+DayOfWeekClaimed        0
+MonthClaimed            0
+WeekOfMonthClaimed      0
+Sex                     0
+MaritalStatus           0
+Age                     0
+Fault                   0
+PolicyType              0
+VehicleCategory         0
+VehiclePrice            0
+FraudFound_P            0
+PolicyNumber            0
+RepNumber               0
+Deductible              0
+DriverRating            0
+Days_Policy_Accident    0
+Days_Policy_Claim       0
+PastNumberOfClaims      0
+AgeOfVehicle            0
+AgeOfPolicyHolder       0
+PoliceReportFiled       0
+WitnessPresent          0
+AgentType               0
+NumberOfSuppliments     0
+AddressChange_Claim     0
+NumberOfCars            0
+Year                    0
+BasePolicy              0
+dtype: int64
+2025-07-27 15:35:27,567 - __main__ - INFO - Sample rows:
+  Month  WeekOfMonth  DayOfWeek    Make AccidentArea DayOfWeekClaimed  ... AgentType  NumberOfSuppliments AddressChange_Claim NumberOfCars  Year BasePolicy
+0   Dec            5  Wednesday   Honda        Urban          Tuesday  ...  External                 none              1 year       3 to 4  1994  Liability
+1   Jan            3  Wednesday   Honda        Urban           Monday  ...  External                 none           no change    1 vehicle  1994  Collision
+2   Oct            5     Friday   Honda        Urban         Thursday  ...  External                 none           no change    1 vehicle  1994  Collision
+3   Jun            2   Saturday  Toyota        Rural           Friday  ...  External          more than 5           no change    1 vehicle  1994  Liability
+4   Jan            5     Monday   Honda        Urban          Tuesday  ...  External                 none           no change    1 vehicle  1994  Collision
+
+[5 rows x 33 columns]
+2025-07-27 15:35:35,555 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:35:35,556 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:35:35,559 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:35:42,162 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:35:42,226 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:35:42,226 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:35:42,228 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:35:42,228 - logistic_model - INFO - Applying SMOTE for class balancing...
+2025-07-27 15:35:42,452 - logistic_model - INFO - Training Logistic Regression model...
+2025-07-27 15:35:44,332 - logistic_model - INFO - Training complete.
+2025-07-27 15:35:44,332 - logistic_model - INFO - Model saved to: outputs\models\logistic_model.pkl
+2025-07-27 15:35:44,332 - logistic_model - INFO - Feature columns saved to: outputs\models\logistic_features.pkl
+2025-07-27 15:35:44,332 - logistic_model - INFO - Evaluating Logistic Regression model...
+2025-07-27 15:35:44,344 - logistic_model - INFO - Accuracy: 0.6861
+2025-07-27 15:35:44,344 - logistic_model - INFO - Confusion Matrix:
+[[1970  917]
+ [  51  146]]
+2025-07-27 15:35:44,344 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.68      0.80      2887
+           1       0.14      0.74      0.23       197
+
+    accuracy                           0.69      3084
+   macro avg       0.56      0.71      0.52      3084
+weighted avg       0.92      0.69      0.77      3084
+
+2025-07-27 15:35:46,452 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:35:46,509 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:35:46,509 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:35:46,511 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:35:46,511 - neural_network - INFO - Applying SMOTE to balance the dataset...
+2025-07-27 15:35:46,681 - neural_network - INFO - Training neural network model with early stopping...
+2025-07-27 15:35:51,405 - neural_network - INFO - Model training complete.
+2025-07-27 15:35:51,406 - neural_network - INFO - Neural network model and features saved.
+2025-07-27 15:35:51,406 - neural_network - INFO - Evaluating thresholds for better recall on fraud class...
+2025-07-27 15:35:51,452 - neural_network - INFO - Threshold tuning results (Fraud class):
+2025-07-27 15:35:51,456 - neural_network - INFO - Recommended threshold (max recall): 0.10
+2025-07-27 15:35:51,456 - neural_network - INFO - Final Evaluation using selected threshold...
+2025-07-27 15:35:51,474 - neural_network - INFO - Accuracy: 0.4089
+2025-07-27 15:35:51,474 - neural_network - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.37      0.54      2887
+           1       0.10      0.97      0.17       197
+
+    accuracy                           0.41      3084
+   macro avg       0.54      0.67      0.36      3084
+weighted avg       0.94      0.41      0.52      3084
+
+2025-07-27 15:37:28,118 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:37:28,172 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:37:28,172 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:37:28,174 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:37:28,174 - ensemble_model - INFO - Training ensemble model with Logistic Regression and BalancedRandomForest...
+2025-07-27 15:37:28,600 - ensemble_model - INFO - Ensemble model training complete.
+2025-07-27 15:37:28,660 - ensemble_model - INFO - Model and features saved to outputs\models\random_forest_ensemble.pkl
+2025-07-27 15:37:28,660 - ensemble_model - INFO - Evaluating ensemble model...
+2025-07-27 15:37:28,779 - ensemble_model - INFO - Accuracy: 0.6297
+2025-07-27 15:37:28,779 - ensemble_model - INFO - ROC AUC: 0.8079
+2025-07-27 15:37:28,779 - ensemble_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.61      0.76      2887
+           1       0.13      0.88      0.23       197
+
+    accuracy                           0.63      3084
+   macro avg       0.56      0.75      0.49      3084
+weighted avg       0.93      0.63      0.72      3084
+
+2025-07-27 15:37:33,405 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:37:33,477 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:37:33,477 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:37:33,477 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:37:33,477 - xgboost_model - INFO - Training XGBoost model...
+2025-07-27 15:37:33,582 - xgboost_model - INFO - Training complete.
+2025-07-27 15:37:33,582 - xgboost_model - INFO - Evaluating XGBoost model...
+2025-07-27 15:37:33,606 - xgboost_model - INFO - Accuracy: 0.8126
+2025-07-27 15:37:33,606 - xgboost_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.83      0.89      2887
+           1       0.18      0.52      0.26       197
+
+    accuracy                           0.81      3084
+   macro avg       0.57      0.68      0.58      3084
+weighted avg       0.91      0.81      0.85      3084
+
+2025-07-27 15:38:00,076 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:38:29,750 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:38:36,153 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:39:58,242 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-07-27 15:39:58,308 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-07-27 15:39:58,308 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-07-27 15:39:58,310 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-07-27 15:39:58,310 - xgboost_model - INFO - Training XGBoost model...
+2025-07-27 15:39:58,424 - xgboost_model - INFO - Training complete.
+2025-07-27 15:39:58,429 - xgboost_model - INFO - Evaluating XGBoost model...
+2025-07-27 15:39:58,445 - xgboost_model - INFO - Accuracy: 0.8126
+2025-07-27 15:39:58,445 - xgboost_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.83      0.89      2887
+           1       0.18      0.52      0.26       197
+
+    accuracy                           0.81      3084
+   macro avg       0.57      0.68      0.58      3084
+weighted avg       0.91      0.81      0.85      3084
+
+2025-07-27 15:40:39,166 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:40:44,626 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:40:51,204 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:40:58,465 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:51:24,343 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:51:33,829 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:51:39,052 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:51:48,562 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:06,028 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:13,579 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:26,716 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:33,778 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:36,630 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:40,992 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:52:59,893 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:53:10,009 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:53:15,034 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:53:20,221 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:53:39,486 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:53:44,691 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:53:54,901 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:00,197 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:07,786 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:30,143 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:38,958 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:46,545 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:49,243 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:54,320 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:54:57,310 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:55:04,554 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:55:07,394 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:55:10,982 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:55:14,310 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:55:19,251 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:06,363 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:12,792 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:20,588 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:25,737 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:30,653 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:44,704 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 15:56:52,738 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:05:05,436 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:05:10,980 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:05:31,507 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:05:36,325 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:05:44,315 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:05:52,233 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:06:35,792 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:08:13,146 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:08:18,487 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:08:22,479 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:08:26,965 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:09:35,296 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:09:39,528 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:09:52,120 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-07-27 16:09:56,615 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:40:55,504 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:06,089 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:30,054 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:33,048 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:35,095 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:37,607 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:40,656 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:41:58,787 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:42:16,839 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:42:56,170 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:43:01,287 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:43:05,618 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:43:10,217 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:45:30,398 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:45:41,016 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:45:49,699 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:45:57,649 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:49:17,047 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:49:26,074 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:49:34,784 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:49:45,640 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:55:31,465 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:55:42,510 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:55:48,379 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 14:55:56,871 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:04:17,987 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-08-02 15:04:18,050 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-08-02 15:04:18,050 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-08-02 15:04:18,053 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-08-02 15:04:18,053 - logistic_model - INFO - Applying SMOTE for class balancing...
+2025-08-02 15:04:18,259 - logistic_model - INFO - Training Logistic Regression model...
+2025-08-02 15:04:19,501 - logistic_model - INFO - Training complete.
+2025-08-02 15:04:19,501 - logistic_model - INFO - Model saved to: outputs\models\logistic_model.pkl
+2025-08-02 15:04:19,501 - logistic_model - INFO - Feature columns saved to: outputs\models\logistic_features.pkl
+2025-08-02 15:04:19,501 - logistic_model - INFO - Evaluating Logistic Regression model...
+2025-08-02 15:04:19,515 - logistic_model - INFO - Accuracy: 0.6861
+2025-08-02 15:04:19,517 - logistic_model - INFO - Confusion Matrix:
+[[1970  917]
+ [  51  146]]
+2025-08-02 15:04:19,517 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.68      0.80      2887
+           1       0.14      0.74      0.23       197
+
+    accuracy                           0.69      3084
+   macro avg       0.56      0.71      0.52      3084
+weighted avg       0.92      0.69      0.77      3084
+
+2025-08-02 15:05:51,560 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:07:28,746 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:09:31,766 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:12:04,514 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-08-02 15:12:04,574 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-08-02 15:12:04,574 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-08-02 15:12:04,576 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-08-02 15:12:04,576 - random_forest_model - INFO - Applying SMOTE for class balancing...
+2025-08-02 15:12:04,717 - random_forest_model - INFO - Training Balanced Random Forest (RandomForestClassifier)...
+2025-08-02 15:12:05,688 - random_forest_model - INFO - Training complete.
+2025-08-02 15:12:05,724 - random_forest_model - INFO - Model saved to: outputs\models\random_forest_model.pkl
+2025-08-02 15:12:05,724 - random_forest_model - INFO - Feature columns saved to: outputs\models\random_forest_features.pkl
+2025-08-02 15:12:05,724 - random_forest_model - INFO - Evaluating Random Forest model...
+2025-08-02 15:12:05,764 - random_forest_model - INFO - Accuracy: 0.8635
+2025-08-02 15:12:05,764 - random_forest_model - INFO - Confusion Matrix:
+[[2615  272]
+ [ 149   48]]
+2025-08-02 15:12:05,764 - random_forest_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.91      0.93      2887
+           1       0.15      0.24      0.19       197
+
+    accuracy                           0.86      3084
+   macro avg       0.55      0.57      0.56      3084
+weighted avg       0.90      0.86      0.88      3084
+
+2025-08-02 15:12:24,159 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:17:28,182 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:17:58,203 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:18:13,334 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:23:42,449 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:23:59,086 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:24:30,350 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:24:36,149 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:25:21,814 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:25:26,980 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:26:30,259 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:29:23,465 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-08-02 15:29:23,520 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-08-02 15:29:23,520 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-08-02 15:29:23,522 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-08-02 15:29:23,522 - neural_network_model - INFO - Applying SMOTE for class balancing...
+2025-08-02 15:29:23,665 - neural_network_model - INFO - Training Neural Network (MLPClassifier)...
+2025-08-02 15:29:30,710 - neural_network_model - INFO - Training complete.
+2025-08-02 15:29:30,718 - neural_network_model - INFO - Model saved to: outputs\models\neural_network_model.pkl
+2025-08-02 15:29:30,718 - neural_network_model - INFO - Feature columns saved to: outputs\models\neural_network_features.pkl
+2025-08-02 15:29:30,718 - neural_network_model - INFO - Evaluating Neural Network model...
+2025-08-02 15:29:30,724 - neural_network_model - INFO - Accuracy: 0.5707
+2025-08-02 15:29:30,724 - neural_network_model - INFO - Confusion Matrix:
+[[1581 1306]
+ [  18  179]]
+2025-08-02 15:29:30,724 - neural_network_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.55      0.70      2887
+           1       0.12      0.91      0.21       197
+
+    accuracy                           0.57      3084
+   macro avg       0.55      0.73      0.46      3084
+weighted avg       0.93      0.57      0.67      3084
+
+2025-08-02 15:29:32,844 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-08-02 15:29:32,900 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-08-02 15:29:32,900 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-08-02 15:29:32,900 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-08-02 15:29:32,900 - logistic_model - INFO - Applying SMOTE for class balancing...
+2025-08-02 15:29:33,056 - logistic_model - INFO - Training Logistic Regression model...
+2025-08-02 15:29:34,486 - logistic_model - INFO - Training complete.
+2025-08-02 15:29:34,486 - logistic_model - INFO - Model saved to: outputs\models\logistic_model.pkl
+2025-08-02 15:29:34,486 - logistic_model - INFO - Feature columns saved to: outputs\models\logistic_features.pkl
+2025-08-02 15:29:34,486 - logistic_model - INFO - Evaluating Logistic Regression model...
+2025-08-02 15:29:34,492 - logistic_model - INFO - Accuracy: 0.6861
+2025-08-02 15:29:34,492 - logistic_model - INFO - Confusion Matrix:
+[[1970  917]
+ [  51  146]]
+2025-08-02 15:29:34,492 - logistic_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.68      0.80      2887
+           1       0.14      0.74      0.23       197
+
+    accuracy                           0.69      3084
+   macro avg       0.56      0.71      0.52      3084
+weighted avg       0.92      0.69      0.77      3084
+
+2025-08-02 15:29:36,271 - Modules.data_loader - INFO - Dataset loaded successfully with shape (15420, 33)
+2025-08-02 15:29:36,345 - data_processing - INFO - Preprocessed data shape: (15420, 28)
+2025-08-02 15:29:36,345 - data_processing - INFO - Splitting data: test_size=0.2, random_state=42
+2025-08-02 15:29:36,345 - data_processing - INFO - Train shape: (12336, 28), Test shape: (3084, 28)
+2025-08-02 15:29:36,345 - xgboost_model - INFO - Training XGBoost model...
+2025-08-02 15:29:36,460 - xgboost_model - INFO - Training complete.
+2025-08-02 15:29:36,466 - xgboost_model - INFO - Evaluating XGBoost model...
+2025-08-02 15:29:36,490 - xgboost_model - INFO - Accuracy: 0.8126
+2025-08-02 15:29:36,490 - xgboost_model - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.83      0.89      2887
+           1       0.18      0.52      0.26       197
+
+    accuracy                           0.81      3084
+   macro avg       0.57      0.68      0.58      3084
+weighted avg       0.91      0.81      0.85      3084
+
+2025-08-02 15:30:19,747 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:30:41,902 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:30:46,974 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:30:57,801 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:31:46,332 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:31:55,115 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:32:15,819 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:32:23,671 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:32:28,907 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:33:21,278 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:33:27,769 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:33:32,649 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:33:37,812 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:00,043 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:09,059 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:17,208 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:20,386 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:24,068 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:39,001 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:43,298 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:48,630 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:52,689 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:34:57,467 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:01,717 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:05,810 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:12,854 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:20,944 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:25,793 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:30,523 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:36,783 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:40,664 - data_processing - INFO - Preprocessed data shape: (1, 28)
+2025-08-02 15:35:44,527 - data_processing - INFO - Preprocessed data shape: (1, 28)

@@ -1,62 +1,68 @@
 import os
 import sys
-import pandas as pd
+import json
 import joblib
+import pandas as pd
+from imblearn.over_sampling import SMOTE
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from imblearn.ensemble import BalancedRandomForestClassifier
-from sklearn.ensemble import VotingClassifier
-from sklearn.metrics import classification_report, roc_auc_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-# Add project root to sys.path
+# Add project root to path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.logger import setup_logger
 from Modules.data_loader import load_dataset
 from Modules.data_processing import preprocess_data, split_and_scale
 
-logger = setup_logger("ensemble_model")
+logger = setup_logger("random_forest_model")
 
-MODEL_PATH = os.path.join("outputs", "models", "random_forest_ensemble.pkl")
+# ----------------- File Paths -----------------
+MODEL_PATH = os.path.join("outputs", "models", "random_forest_model.pkl")
 FEATURES_PATH = os.path.join("outputs", "models", "random_forest_features.pkl")
+ACCURACY_PATH = os.path.join("outputs", "models", "random_forest_accuracy.json")
 
-# ------------------ TRAINING ------------------
+# ----------------- TRAINING -----------------
+def train_random_forest(X_train, y_train):
+    logger.info("Applying SMOTE for class balancing...")
+    smote = SMOTE(random_state=42)
+    X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
 
-def train_ensemble_model(X_train, y_train):
-    logger.info("Training ensemble model with Logistic Regression and BalancedRandomForest...")
+    logger.info("Training Balanced Random Forest (RandomForestClassifier)...")
+    model = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=42)
+    model.fit(X_resampled, y_resampled)
+    logger.info("Training complete.")
+    return model
 
-    lr = LogisticRegression(solver='liblinear', class_weight='balanced', random_state=42)
-    brf = BalancedRandomForestClassifier(n_estimators=100, random_state=42)
+# ----------------- EVALUATION -----------------
+def evaluate_model(model, X_test, y_test):
+    logger.info("Evaluating Random Forest model...")
+    predictions = model.predict(X_test)
 
-    ensemble = VotingClassifier(
-        estimators=[('lr', lr), ('brf', brf)],
-        voting='soft'
-    )
-
-    ensemble.fit(X_train, y_train)
-    logger.info("Ensemble model training complete.")
-    return ensemble
-
-def evaluate_ensemble(model, X_test, y_test):
-    logger.info("Evaluating ensemble model...")
-    y_pred = model.predict(X_test)
-    y_proba = model.predict_proba(X_test)[:, 1]
-
-    acc = model.score(X_test, y_test)
-    roc_auc = roc_auc_score(y_test, y_proba)
-    report = classification_report(y_test, y_pred)
+    acc = accuracy_score(y_test, predictions)
+    cm = confusion_matrix(y_test, predictions)
+    report = classification_report(y_test, predictions, zero_division=0)
 
     logger.info(f"Accuracy: {acc:.4f}")
-    logger.info(f"ROC AUC: {roc_auc:.4f}")
-    logger.info("Classification Report:\n" + report)
+    logger.info(f"Confusion Matrix:\n{cm}")
+    logger.info(f"Classification Report:\n{report}")
 
-    print("Ensemble Model Accuracy:", acc)
-    print("ROC AUC:", roc_auc)
-    print("Classification Report:\n", report)
+    # Save accuracy to JSON
+    with open(ACCURACY_PATH, "w") as f:
+        json.dump({"accuracy": acc}, f)
 
-# ------------------ PREDICTION ------------------
+    print("\nRandom Forest Evaluation Results")
+    print("----------------------------------------")
+    print(f"Accuracy: {acc:.4f}")
+    print("\nConfusion Matrix:\n", cm)
+    print("\nClassification Report:\n", report)
 
+# ----------------- PREDICTION FUNCTION -----------------
 def predict_random_forest(input_df):
     try:
+        if not os.path.exists(MODEL_PATH) or not os.path.exists(FEATURES_PATH):
+            raise FileNotFoundError("Model or feature column file not found. Please train the model first.")
+
         model = joblib.load(MODEL_PATH)
         expected_cols = joblib.load(FEATURES_PATH)
 
@@ -64,26 +70,34 @@ def predict_random_forest(input_df):
         processed_df = processed_df.reindex(columns=expected_cols, fill_value=0)
 
         prediction = model.predict(processed_df)[0]
-        return prediction, model, processed_df
+
+        # Load saved accuracy
+        accuracy = None
+        if os.path.exists(ACCURACY_PATH):
+            with open(ACCURACY_PATH) as f:
+                accuracy = json.load(f).get("accuracy")
+
+        return prediction, model, processed_df, accuracy
 
     except Exception as e:
         logger.error(f"Prediction failed: {e}")
         raise e
 
-# ------------------ MAIN BLOCK ------------------
-
+# ----------------- MAIN EXECUTION -----------------
 if __name__ == "__main__":
     df = load_dataset()
     if df is not None:
+        # Preprocess and split data
         X, y = preprocess_data(df, training=True)
         X_train, X_test, y_train, y_test = split_and_scale(X, y)
 
-        model = train_ensemble_model(X_train, y_train)
-
-        # Save model and features
+        # Train and save model
+        model = train_random_forest(X_train, y_train)
         os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
         joblib.dump(model, MODEL_PATH)
         joblib.dump(X_train.columns.tolist(), FEATURES_PATH)
-        logger.info(f"Model and features saved to {MODEL_PATH}")
+        logger.info(f"Model saved to: {MODEL_PATH}")
+        logger.info(f"Feature columns saved to: {FEATURES_PATH}")
 
-        evaluate_ensemble(model, X_test, y_test)
+        # Evaluate and save accuracy
+        evaluate_model(model, X_test, y_test)

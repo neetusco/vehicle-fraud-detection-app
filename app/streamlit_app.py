@@ -8,12 +8,12 @@ from importlib import import_module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(page_title="Insurance Fraud Checker", layout="centered")
-st.title("Vehicle Insurance Fraud Checker")
+st.title(" Vehicle Insurance Fraud Checker")
 
 # --- MODEL OPTIONS ---
 model_options = {
     "Logistic Regression": ("Modules.logistic_regression_model", "predict_logistic"),
-    "Balanced RF + LR": ("Modules.random_forest_model", "predict_random_forest"),
+    "Random Forest": ("Modules.random_forest_model", "predict_random_forest"),
     "Neural Network": ("Modules.neural_network_model", "predict_neural_network"),
     "XGBoost": ("Modules.XGBoost_classifier", "predict_xgboost")
 }
@@ -66,16 +66,21 @@ if selected_model:
             model_module = import_module(module_name)
             predict_method = getattr(model_module, func_name)
 
-            prediction, model, processed_df = predict_method(input_df)
+            prediction, model, processed_df, accuracy = predict_method(input_df)
 
             if prediction == 1:
                 st.error("Fraudulent Claim Detected!")
             else:
                 st.success("Claim appears genuine.")
+                
+            # Show model accuracy   
+            if accuracy is not None:
+                st.markdown(f"🧪 **Model Accuracy (on test data):** {accuracy:.2%}")
 
-            if model and hasattr(model, "predict_proba"):
-                prob = model.predict_proba(processed_df)[0][1]
-                st.info(f"Fraud Probability: **{prob:.2%}**")
+            # if model and hasattr(model, "predict_proba"):
+            #      prob = model.predict_proba(processed_df)[0][1]
+            #      st.info(f"Fraud Probability: **{prob:.2%}**")
+
 
         except Exception as e:
             st.error(f"Error running model: {e}")
